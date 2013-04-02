@@ -1,4 +1,4 @@
 .vagrant
 
-/node
-/build
+/src
+/sysroot
