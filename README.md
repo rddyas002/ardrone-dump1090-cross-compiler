@@ -52,8 +52,8 @@ Now you can plug your RTL-SDR dongle into the drone's USB connector.
 Once that's done you can make sure the dongle is visible by running
 `lsusb`:
 
-```bash
-$ lsusb
+```
+# lsusb
 Bus 001 Device 002: ID 0bda:2838 Realtek Semiconductor Corp. 
 Bus 001 Device 001: ID 1d6b:0002  
 ```
@@ -63,8 +63,8 @@ above), try unplugging and re-plugging the dongle.
 
 You may now run `dump1090`:
 
-```base
-$ dump1090 --interactive
+```
+# dump1090 --interactive
 
 Hex    Flight   Altitude  Speed   Lat       Lon       Track  Messages Seen   .
 --------------------------------------------------------------------------------
