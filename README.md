@@ -1,5 +1,7 @@
 # ardrone-dump1090-cross-compiler
 
+John Wiseman, jjwiseman@gmail.com
+
 This project makes it easy to use a cheap and widely available
 [DVB-T](http://en.wikipedia.org/wiki/DVB-T) USB dongle as a
 software-defined radio on your AR.Drone 2.  Your drone will then be
@@ -48,6 +50,9 @@ host OS, not in the vagrant VM):
 $ ./helpers/install.sh
 ```
 
+The install script puts `rtl-sdr` and `dump1090` in `/bin`, and
+`librtlsdr.so.0.0.0` in `/lib`.
+
 ## Usage
 
 Before plugging your DVB-T dongle into your AR.Drone, you will need to
@@ -59,8 +64,8 @@ $ telnet 192.168.1.1
 # gpio 127 -d i
 ```
 
-Now you can plug your RTL-SDR dongle into the drone's USB connector.
-Once that's done you can confirm that the dongle is visible by running
+Now you can plug the dongle into the drone's USB connector.  Once
+that's done you can confirm that the dongle is visible by running
 `lsusb`:
 
 ```
@@ -70,7 +75,7 @@ Bus 001 Device 001: ID 1d6b:0002
 ```
 
 If you don't see your dongle (the Realtek device listed above), try
-unplugging and re-plugging the dongle.
+unplugging and re-plugging it.
 
 You may now run `dump1090`:
 
@@ -86,11 +91,3 @@ a2597f          40000     0       0.000     0.000     0     7         2 sec
 a71d34          33275     0       0.000     0.000     0     14        0 sec
 71be10 KAL213   4875      272     34.029    -118.312   85    166       0 sec
 ```
-
-You can even enable the dump1090 web server:
-
-```
-# dump1090 --net-http-port
-```
-
-and then point your web browser at http://192.168.1.1:8080/:
