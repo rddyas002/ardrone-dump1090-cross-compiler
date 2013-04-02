@@ -11,20 +11,25 @@ sudo apt-get -y install \
     libtool \
     pkg-config
 
-if [ ! -d rtl-sdr ]; then
-    echo "-> Downloading rtl-sdr source."
-    git clone git://git.osmocom.org/rtl-sdr.git
-fi
+mkdir -p src
 
-if [ ! -d libusb-1.0.9 ]; then
+if [ ! -d src/libusb-1.0.9 ]; then
     echo "-> Downloading libusb source."
-    curl -L -O "http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.9/libusb-1.0.9.tar.bz2"
-    tar xvjf libusb-1.0.9.tar.bz2
+    (cd src &&
+        curl -L -O "http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.9/libusb-1.0.9.tar.bz2" &&
+        tar xvjf libusb-1.0.9.tar.bz2)
 fi
 
-if [ ! -d dump1090 ]; then
+if [ ! -d src/rtl-sdr ]; then
+    echo "-> Downloading rtl-sdr source."
+    (cd src &&
+        git clone git://git.osmocom.org/rtl-sdr.git)
+fi
+
+if [ ! -d src/dump1090 ]; then
     echo "-> Downloading dump1090 source."
-    git clone git://github.com/wiseman/dump1090.git
+    (cd src && 
+        git clone git://github.com/wiseman/dump1090.git)
 fi
 
 
