@@ -50,7 +50,7 @@ host OS, not in the vagrant VM):
 $ ./helpers/install.sh
 ```
 
-The install script puts `rtl-sdr` and `dump1090` in `/bin`, and
+The install script puts `rtl_sdr` and `dump1090` in `/bin`, and
 `librtlsdr.so.0.0.0` in `/lib`.
 
 ## Usage
