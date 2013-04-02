@@ -1,8 +1,6 @@
 #!/bin/bash
 set -eu
 
-NODE_VERSION="v0.8.15"
-
 echo "-> apt-get installing packages"
 
 sudo apt-get -y install \
@@ -12,15 +10,6 @@ sudo apt-get -y install \
     git \
     libtool \
     pkg-config
-
-
-if [ ! -d node ]; then
-    echo "-> Downloading node.js source"
-    curl -v -O http://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}.tar.gz
-    tar -zxf node-${NODE_VERSION}.tar.gz
-    mv node-${NODE_VERSION} node
-    rm -rf node-${NODE_VERSION}.tar.gz
-fi
 
 if [ ! -d rtl-sdr ]; then
     echo "-> Downloading rtl-sdr source."

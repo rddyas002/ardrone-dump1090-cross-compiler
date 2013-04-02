@@ -1,10 +1,7 @@
-# node-cross-compiler
+# dump1090-cross-compiler
 
-This project aims to simplify the process of cross-compiling node.js on
-smartphone and robotics platforms.
-
-My main target platform is the Parrot AR Drone 2.0, but I will merge pull
-requests for any other platforms as well.
+This project makes it easy to cross-compile rtl-sdr and the dump1090
+Mode S decoder for the AR.Drone.
 
 ## Requirements
 
@@ -13,11 +10,12 @@ compiling is done inside of a virtual machine.
 
 ## Cross compiling
 
-Cross compiling node.js for the `ardrone2` is as easy as running:
+Cross compiling rtl-sdr and dump1090 for the AR.Drone is as easy as
+running:
 
 ```bash
-$ git clone git://github.com/felixge/node-cross-compiler.git
-$ cd node-cross-compiler
+$ git clone git://github.com/wiseman/dump1090-ardrone.git
+$ cd dump1090-ardrone
 $ vagrant up
 $ vagrant ssh
 $ cd cross-compiler
