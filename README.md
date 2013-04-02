@@ -1,7 +1,9 @@
 # dump1090-cross-compiler
 
-This project makes it easy to cross-compile rtl-sdr and the dump1090
-Mode S decoder for the AR.Drone 2.
+This project makes it easy to cross-compile
+[rtl-sdr](http://sdr.osmocom.org/trac/wiki/rtl-sdr) and the
+[dump1090](https://github.com/antirez/dump1090) Mode S decoder for the
+AR.Drone 2.
 
 ## Requirements
 
