@@ -44,8 +44,8 @@ to run these commands to activate USB host mode:
 
 ```bash
 $ telnet 192.168.1.1
-$ gpio 127 -d ho 1
-$ gpio 127 -d i
+# gpio 127 -d ho 1
+# gpio 127 -d i
 ```
 
 Now you can plug your RTL-SDR dongle into the drone's USB connector.
