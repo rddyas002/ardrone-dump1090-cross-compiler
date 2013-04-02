@@ -7,9 +7,13 @@ echo "-> Installing apt-get packages"
 
 sudo apt-get -y install \
   build-essential \
-  curl
+  curl \
+  git \
+  automake \
+  libtool \
+  pkg-config
 
-echo "-> Installing node.js"
+echo "-> Downloading node.js source"
 
 if [ ! -d node ]; then
   curl -O http://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}.tar.gz
@@ -17,7 +21,23 @@ if [ ! -d node ]; then
   mv node-${NODE_VERSION} node
   rm -rf node-${NODE_VERSION}.tar.gz
 fi
-cd node
+
+if [ ! -d rtl-sdr ]; then
+    echo "-> Downloading rtl-sdr source."
+    git clone git://git.osmocom.org/rtl-sdr.git
+fi
+
+if [ ! -d libusb-1.0.9 ]; then
+    echo "-> Downloading libusb source."
+    curl -L -O http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.9/libusb-1.0.9.tar.bz2
+    tar xvj libusb-1.0.9.tar.bz2
+fi
+
+if [ ! -d dump1090 ]; then
+    echo "-> Downloading dump1090 source."
+    git clone git://github.com/wiseman/dump1090.git
+fi
+
 
 # Unfortunately we can't put this into our project dir as vboxfs complains
 # about hardlinks in the tar : /
