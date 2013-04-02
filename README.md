@@ -1,14 +1,24 @@
 # ardrone-dump1090-cross-compiler
 
-This project makes it easy to cross-compile
-[rtl-sdr](http://sdr.osmocom.org/trac/wiki/rtl-sdr) and the
+This project makes it easy to use a cheap and widely available
+[DVB-T](http://en.wikipedia.org/wiki/DVB-T) USB dongle as a
+software-defined radio on your AR.Drone 2.  Your drone will then be
+able to pick up Mode S and
+[ADS-B](http://en.wikipedia.org/wiki/Automatic_dependent_surveillance-broadcast)
+broadcasts from aircraft transponders (see the [rtl-sdr
+project](http://sdr.osmocom.org/trac/wiki/rtl-sdr) and "[Tracking
+planes for $20 or
+less](http://www.irrational.net/2012/08/06/tracking-planes-for-20-or-less)"
+for background).
+
+What the project actually provides is an easy way to cross-compile the
 [dump1090](https://github.com/antirez/dump1090) Mode S decoder for the
-AR.Drone 2.
+AR.Drone.
 
 ## Requirements
 
-You will need to install [vagrant](http://vagrantup.com/) as the cross
-compiling is done inside of a virtual machine.
+You will need to install [vagrant](http://vagrantup.com/) as the
+cross-compiling is done inside of a virtual machine.
 
 ## Cross compiling
 
@@ -17,7 +27,7 @@ running the following:
 
 ```bash
 $ git clone git://github.com/wiseman/ardrone-dump1090-cross-compiler.git
-$ cd dump1090-ardrone-cross-compiler
+$ cd ardrone-dump1090-cross-compiler
 $ vagrant up
 $ vagrant ssh
 $ cd cross-compiler
@@ -31,7 +41,8 @@ rtl-sdr and dump1090 to run on the AR.Drone 2.
 ## Installation
 
 A helper script will install rtl-sdr and dump1090 on your AR.Drone 2.
-First connect to the drone's wifi.  Then run the following (on your host OS, not in the vagrant VM):
+First connect to the drone's wifi.  Then run the following (on your
+host OS, not in the vagrant VM):
 
 ```bash
 $ ./helpers/install.sh
@@ -39,8 +50,8 @@ $ ./helpers/install.sh
 
 ## Usage
 
-Before plugging your RTL-SDR dongle into your AR.Drone, you will need
-to run these commands to activate USB host mode:
+Before plugging your DVB-T dongle into your AR.Drone, you will need to
+run these commands to activate USB host mode:
 
 ```
 $ telnet 192.168.1.1
@@ -49,7 +60,7 @@ $ telnet 192.168.1.1
 ```
 
 Now you can plug your RTL-SDR dongle into the drone's USB connector.
-Once that's done you can make sure the dongle is visible by running
+Once that's done you can confirm that the dongle is visible by running
 `lsusb`:
 
 ```
@@ -58,8 +69,8 @@ Bus 001 Device 002: ID 0bda:2838 Realtek Semiconductor Corp.
 Bus 001 Device 001: ID 1d6b:0002  
 ```
 
-If you don't see your dongle (mine is the Realtek device listed
-above), try unplugging and re-plugging the dongle.
+If you don't see your dongle (the Realtek device listed above), try
+unplugging and re-plugging the dongle.
 
 You may now run `dump1090`:
 
@@ -75,3 +86,11 @@ a2597f          40000     0       0.000     0.000     0     7         2 sec
 a71d34          33275     0       0.000     0.000     0     14        0 sec
 71be10 KAL213   4875      272     34.029    -118.312   85    166       0 sec
 ```
+
+You can even enable the dump1090 web server:
+
+```
+# dump1090 --net-http-port
+```
+
+and then point your web browser at http://192.168.1.1:8080/:
