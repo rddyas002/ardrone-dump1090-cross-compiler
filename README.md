@@ -42,7 +42,7 @@ $ ./helpers/install.sh
 Before plugging your RTL-SDR dongle into your AR.Drone, you will need
 to run these commands to activate USB host mode:
 
-```bash
+```
 $ telnet 192.168.1.1
 # gpio 127 -d ho 1
 # gpio 127 -d i
