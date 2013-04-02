@@ -80,7 +80,7 @@ unplugging and re-plugging it.
 You may now run `dump1090`:
 
 ```
-# dump1090 --interactive
+# dump1090 --aggressive --interactive
 
 Hex    Flight   Altitude  Speed   Lat       Lon       Track  Messages Seen   .
 --------------------------------------------------------------------------------
@@ -91,3 +91,21 @@ a2597f          40000     0       0.000     0.000     0     7         2 sec
 a71d34          33275     0       0.000     0.000     0     14        0 sec
 71be10 KAL213   4875      272     34.029    -118.312   85    166       0 sec
 ```
+
+You can even use dump1090's fancy map mode, if you copy the
+`gmap.html` file to your drone and use
+[ardrone-wpa2](https://github.com/daraosn/ardrone-wpa2) to put your
+drone and laptop onto a wifi network with internet connectivity:
+
+```
+# Assume I've used ardrone-wpa2 to put my drone on my wifi at 192.168.0.200.
+$ ftp -u ftp://anonymous:anonymous@192.168.0.200/gmap.html /src/dump1090/gmap.html
+$ telnet 192.168.0.200
+# cd /data/video
+# dump1090 --net --aggressive
+```
+
+Then point a browser on your laptop at dump1090's HTTP server, which
+in this case would be http://192.168.0.200:8080/:
+
+![Map screenshot](ardrone-ads-b.jpg?raw=true)
