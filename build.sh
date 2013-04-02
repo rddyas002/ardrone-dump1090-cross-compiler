@@ -12,15 +12,15 @@ export LINK="${CXX}"
 export CCFLAGS="-march=armv7-a -mtune=cortex-a8 -mfpu=vfp"
 export ARM_TARGET_LIB="${SOURCERY}/arm-none-linux-gnueabi/libc"
 
-export PKG_CONFIG_PATH="/home/vagrant/cross-compiler/sysroot/lib/pkgconfig"
 export PREFIX_DIR="/home/vagrant/cross-compiler/sysroot"
+export PKG_CONFIG_PATH="/home/vagrant/cross-compiler/sysroot/lib/pkgconfig"
 
-(cd libusb-1.0.9 &&
+(cd src/libusb-1.0.9 &&
  ./configure --host=arm-linux --prefix=${PREFIX_DIR} && make install --jobs=16)
 
-(cd rtl-sdr &&
+(cd src/rtl-sdr &&
  autoreconf -i &&
  ./configure --host=arm-linux --prefix=${PREFIX_DIR} &&
  make install --jobs=16)
 
-(cd dump1090 && make --jobs=16)
+(cd src/dump1090 && make --jobs=16)
