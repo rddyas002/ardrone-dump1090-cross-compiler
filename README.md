@@ -1,4 +1,4 @@
-# dump1090-cross-compiler
+# ardrone-dump1090-cross-compiler
 
 This project makes it easy to cross-compile
 [rtl-sdr](http://sdr.osmocom.org/trac/wiki/rtl-sdr) and the
