@@ -13,7 +13,7 @@ planes for $20 or
 less](http://www.irrational.net/2012/08/06/tracking-planes-for-20-or-less)"
 for background).
 
-What the project actually provides is an easy way to cross-compile the
+What the project actually provides is an easy way to cross-compile rtl-sdr and the
 [dump1090](https://github.com/antirez/dump1090) Mode S decoder for the
 AR.Drone.
 
