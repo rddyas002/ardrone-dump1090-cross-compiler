@@ -17,28 +17,43 @@ What the project actually provides is an easy way to cross-compile rtl-sdr and t
 [dump1090](https://github.com/antirez/dump1090) Mode S decoder for the
 AR.Drone.
 
+
 ## Requirements
 
 You will need to install [vagrant](http://vagrantup.com/) as the
 cross-compiling is done inside of a virtual machine.
 
+
 ## Cross compiling
 
-Cross compiling rtl-sdr and dump1090 for the AR.Drone 2 is as easy as
-running the following:
+Cross compiling dump1090 for the AR.Drone 2 is easy.  First you will
+create the new VM, ssh into it, and build lib-usb and rtl-sdr:
 
 ```bash
-$ git clone git://github.com/wiseman/ardrone-dump1090-cross-compiler.git
-$ cd ardrone-dump1090-cross-compiler
-$ vagrant up
-$ vagrant ssh
-$ cd cross-compiler
-$ ./setup-vm.sh
-$ ./build.sh
+host$ git clone git://github.com/wiseman/ardrone-dump1090-cross-compiler.git
+host$ cd ardrone-dump1090-cross-compiler
+host$ vagrant up
+host$ vagrant ssh
+vagrant$ cd cross-compiler
+vagrant$ ./setup-vm.sh
+vagrant$ ./build-prereqs.sh
 ```
 
-This will fire up a new vagrant machine, ssh into it, and build
-rtl-sdr and dump1090 to run on the AR.Drone 2.
+Next you will checkout the source to dump1090 and build it.  Note that
+these commands are performed while you're ssh'ed into the VM.  There
+are a few different versions of dump1090 you can choose from; I
+recommend [MalcolmRobb's
+version](https://github.com/MalcolmRobb/dump1090) which has a lot of
+extra functionality added:
+
+```bash
+vagrant$ cd ~/cross-compiler/src
+vagrant$ git clone https://github.com/MalcolmRobb/dump1090.git
+vagrant$ . ~/cross-compiler/build-vars.sh
+vagrant$ cd dump1090
+vagrant$ make CC=$CC
+```
+
 
 ## Installation
 
@@ -52,6 +67,7 @@ $ ./helpers/install.sh
 
 The install script puts `rtl_sdr` and `dump1090` in `/bin`, and
 `librtlsdr.so.0.0.0` in `/lib`.
+
 
 ## Usage
 

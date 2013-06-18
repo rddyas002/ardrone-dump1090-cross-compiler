@@ -26,13 +26,6 @@ if [ ! -d src/rtl-sdr ]; then
         git clone git://git.osmocom.org/rtl-sdr.git)
 fi
 
-if [ ! -d src/dump1090 ]; then
-    echo "-> Downloading dump1090 source."
-    (cd src && 
-        git clone git://github.com/wiseman/dump1090.git)
-fi
-
-
 # Unfortunately we can't put this into our project dir as vboxfs complains
 # about hardlinks in the tar : /
 if [ ! -d ~/armtools ]; then
