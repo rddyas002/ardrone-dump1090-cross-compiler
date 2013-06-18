@@ -70,8 +70,8 @@ that's done you can confirm that the dongle is visible by running
 
 ```
 # lsusb
-Bus 001 Device 002: ID 0bda:2838 Realtek Semiconductor Corp. 
-Bus 001 Device 001: ID 1d6b:0002  
+Bus 001 Device 002: ID 0bda:2838 Realtek Semiconductor Corp.
+Bus 001 Device 001: ID 1d6b:0002
 ```
 
 If you don't see your dongle (the Realtek device listed above), try
