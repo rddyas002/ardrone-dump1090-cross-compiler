@@ -35,7 +35,7 @@ host$ cd ardrone-dump1090-cross-compiler
 host$ vagrant up
 host$ vagrant ssh
 vagrant$ cd cross-compiler
-vagrant$ ./setup-vm.sh
+vagrant$ ./setup-vm.sh  # This will download about 100 MB of pre-reqs.
 vagrant$ ./build-prereqs.sh
 ```
 
