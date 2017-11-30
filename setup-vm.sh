@@ -32,7 +32,7 @@ if [ ! -d ~/armtools ]; then
     echo "-> Installing code sourcer (arm toolchain)"
     cd ~
     tarball="arm-2012.03-57-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar.bz2"
-    curl -OL http://www.codesourcery.com/public/gnu_toolchain/arm-none-linux-gnueabi/${tarball}
+    curl -OL https://sourcery.mentor.com/public/gnu_toolchain/arm-none-linux-gnueabi/${tarball}
     tar -xf ${tarball}
     mv arm-2012.03 armtools
     rm -rf ${tarball}
